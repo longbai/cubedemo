@@ -1,0 +1,1 @@
+依赖 qiniu-pandora-sdk， druidry
