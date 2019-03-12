@@ -1,0 +1,55 @@
+{
+  "dataSource": "prod_session_analytic",
+  "granularity": {
+    "type": "period",
+    "period": "P1D",
+    "timeZone": "Asia/Shanghai"
+  },
+  "intervals": [
+    "2019-03-09T09:30:01/2019-03-12T09:30:01"
+  ],
+  "filter": {
+    "type": "and",
+    "fields": [
+      {
+        "type": "in",
+        "dimension": "Country",
+        "values": [
+          "中国"
+        ]
+      },
+      {
+        "type": "in",
+        "dimension": "Province",
+        "values": [
+          "上海"
+        ]
+      }
+    ]
+  },
+  "aggregations": [
+    {
+      "name": "pv",
+      "type": "longSum",
+      "fieldName": "pv",
+      "metricName": "pv"
+    },
+    {
+      "fieldName": "uv",
+      "type": "hyperUnique",
+      "name": "uv",
+      "metricName": "uv"
+    }
+  ],
+  "postAggregations": [],
+  "context": {
+    "skipEmptyBuckets": false
+  },
+  "metric": {
+    "type": "numeric",
+    "metric": "pv"
+  },
+  "threshold": 50,
+  "queryType": "topN",
+  "dimension": "Isp"
+}
